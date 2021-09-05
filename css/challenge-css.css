@@ -97,7 +97,7 @@
     padding:0;
     margin-top:11%;
     font-size:5.3em;
-    letter-spacing:30px;
+    letter-spacing:15px;
 }
 
 .font-shadow{
@@ -112,7 +112,7 @@
     margin-bottom:0;
     height:60px;
     color:white;
-    font-size:2.7em;
+    font-size:2.3em;
     letter-spacing: 0px;
     text-shadow:4px 4px #214b73,3.5px 3.5px #214b73,3px 3px #214b73, 2.5px 2.5px #214b73,2px 2px #214b73,1.5px 1.5px #214b73,1px 1px #214b73,0.5px 0.5px #214b73;
 }
