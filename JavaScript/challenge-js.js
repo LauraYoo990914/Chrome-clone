@@ -172,10 +172,10 @@ function geoTrue(position){
     const APIkey = "904bbc97d7b068781fd89bc51f73ff56";
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-    const url = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
     fetch(url).then((response) => response.json()).then((data) => {
       city.innerText = data.name;
-      weather.innerText = `${data.weather[0].main} / ${data.main.temp}`;
+      weather.innerText = `${data.weather[0].main} / ${data.main.temp}°C`;
     });
 }
 
