@@ -1,6 +1,27 @@
-const clock = document.querySelector("#clock h1");
+function geoTrue(position){
+    const weather = document.querySelector("#weather span:first-child");
+    const city = document.querySelector("#weather span:last-child");
+    const APIkey = "904bbc97d7b068781fd89bc51f73ff56";
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
+    fetch(url).then((response) => response.json()).then((data) => {
+      city.innerText = data.name;
+      weather.innerText = `${data.weather[0].main} / ${data.main.temp}°C`;
+    });
+    console.log(lat);
+    console.log(lon);
+}
+
+function geoFalse(){
+    alert("Your computer is not connected to the internet");
+}
+
+navigator.geolocation.getCurrentPosition(geoTrue,geoFalse);
 
 //clock
+
+const clock = document.querySelector("#clock h1");
 
 function handleClock(){
  const date = new Date();
@@ -166,21 +187,3 @@ function backgroundColor(){
 
 backgroundColor();
 
-function geoTrue(position){
-    const weather = document.querySelector("#weather span:first-child");
-    const city = document.querySelector("#weather span:last-child");
-    const APIkey = "904bbc97d7b068781fd89bc51f73ff56";
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
-    fetch(url).then((response) => response.json()).then((data) => {
-      city.innerText = data.name;
-      weather.innerText = `${data.weather[0].main} / ${data.main.temp}°C`;
-    });
-}
-
-function geoFalse(){
-    alert("Your computer is not connected to the internet");
-}
-
-navigator.geolocation.getCurrentPosition(geoTrue,geoFalse);
