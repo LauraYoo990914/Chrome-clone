@@ -167,16 +167,15 @@ function backgroundColor(){
 backgroundColor();
 
 function geoTrue(position){
+    const weather = document.querySelector("#weather span:first-child");
+    const city = document.querySelector("#weather span:last-child");
+    const APIkey = "904bbc97d7b068781fd89bc51f73ff56";
     const lat = position.coords.latitude;
-    console.log(lat);
-    const log = position.coords.longitude;
-    console.log(log);
-    const url = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&appid=904bbc97d7b068781fd89bc51f73ff56&units=metric`;
-    fetch(url).then(response => response.json()).then(data=>{
-        const weatherContainer = document.querySelector("#weather span:first-child");
-        const cityContainer = document.querySelector("#weather span:last-child");
-        cityContainer.innerText = data.name;
-        weatherContainer.innerText = data.weather[0].main;
+    const lon = position.coords.longitude;
+    const url = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}`;
+    fetch(url).then((response) => response.json()).then((data) => {
+      city.innerText = data.name;
+      weather.innerText = `${data.weather[0].main} / ${data.main.temp}`;
     });
 }
 
